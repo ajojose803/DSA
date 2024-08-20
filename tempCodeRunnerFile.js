@@ -1,0 +1,5 @@
+list.print()
+// list.prepend(10)
+// list.print()
+// list.prepend(20)
+// list.prepend(30)
