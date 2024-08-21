@@ -83,30 +83,66 @@
 
 
 class SNode {
-    constructor(value){
+    constructor(value) {
         this.value = value;
         this.next = null;
     }
 }
 
-class SLinkedList{
-    constructor(){
+class SLinkedList {
+    constructor() {
         this.head = null;
         this.size = 0;
     }
 
+    isEmpty() {
+        return this.size == 0
+    }
 
-    prepend(value){
+
+    prepend(value) {
         const node = new SNode(value);
 
-        if(this.head == null){
+        if (this.head == null) {
             this.head = node;
-        } else{
+        } else {
             //console.log("this.head: ",this.head,"node.next: ",node.next,"Node: ", node)
             node.next = this.head;
             this.head = node;
         }
         this.size++;
+    }
+
+    append() {
+        const node = new SNode(value);
+
+        if (this.isEmpty()) {
+            this.head = node
+
+        } else {
+            let current = this.head;
+            while (current.next) {
+                current = current.next
+            }
+            current.next = node
+        }
+        this.size++
+    }
+
+
+    print() {
+        if (this.isEmpty()) {
+            console.log("List is Empty")
+        } else {
+            let current = this.head;
+            let listValues = ''
+            while (current) {
+                listValues += `${current.value} `
+                current = current.next
+            }
+            console.log(listValues)
+
+        }
     }
 }
 
@@ -115,4 +151,5 @@ const list = new SLinkedList();
 list.prepend(1)
 list.prepend(2)
 list.prepend(3)
+list.print()
 // console.log(list);
