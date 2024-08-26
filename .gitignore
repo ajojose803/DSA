@@ -1,0 +1,5 @@
+# ignore ALL files in ANY directory named temp
+tempCodeRunnerFile
+revision.js
+revision2.js
+test.js
