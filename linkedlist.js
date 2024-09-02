@@ -32,6 +32,7 @@ class SinglyLinkedList {
 
         let current = this.head;
         let listValues = '';
+
         while(current){
             listValues += current.value + " ";
             current = current.next
@@ -52,6 +53,7 @@ class SinglyLinkedList {
         }
 
         let reversedList = '';
+        
         while(stack.length) {
             reversedList += stack.pop() + " ";
         }
