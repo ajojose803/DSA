@@ -10,7 +10,6 @@ function reverseString(str) {
 console.log(reverseString("hello")); // Output: "olleh"
 
 
-
 function isPalindrome(str) {
     const cleanedStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
     return cleanedStr === cleanedStr.split('').reverse().join('');

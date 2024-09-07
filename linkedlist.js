@@ -6,12 +6,12 @@ class Node {
 }
 
 class SinglyLinkedList {
-    constructor () {
+    constructor() {
         this.head = null;
         this.size = 0;
     }
 
-    prepend(value){
+    prepend(value) {
         const node = new Node(value);
         node.next = this.head;
         this.head = node;
@@ -20,7 +20,7 @@ class SinglyLinkedList {
     append(value) {
         const node = new Node(value);
         current = this.head
-        while(current.next){
+        while (current.next) {
             current = current.next
         }
         current.next = node;
@@ -28,12 +28,12 @@ class SinglyLinkedList {
     }
 
     print() {
-        if(!this.head) return "List is empty"
+        if (!this.head) return "List is empty"
 
         let current = this.head;
         let listValues = '';
 
-        while(current){
+        while (current) {
             listValues += current.value + " ";
             current = current.next
         }
@@ -42,19 +42,19 @@ class SinglyLinkedList {
 
 
     printReverse() {
-        if(!this.head) return "List is empty"
+        if (!this.head) return "List is empty"
 
         let stack = [];
         let current = this.head;
 
-        while(current) {
+        while (current) {
             stack.push(current.value);
             current = current.next;
         }
 
         let reversedList = '';
-        
-        while(stack.length) {
+
+        while (stack.length) {
             reversedList += stack.pop() + " ";
         }
 
@@ -64,15 +64,15 @@ class SinglyLinkedList {
     findMiddle() {
         let slow = this.head;
         let fast = this.head;
-    
+
         while (fast !== null && fast.next !== null) {
             slow = slow.next;        // Moves one step
             fast = fast.next.next;   // Moves two steps
         }
-    
+
         return slow.value; // slow now points to the middle node
     }
-    
+
     removeDuplicates() {
         if (this.head === null) {
             return; // List is empty
@@ -95,7 +95,7 @@ class SinglyLinkedList {
         if (!Array.isArray(arr)) {
             throw new Error("Input must be an array");
         }
-        
+
         // Clear the list if it has any elements
         this.head = null;
         this.size = 0;
@@ -140,6 +140,61 @@ class SinglyLinkedList {
         }
     }
 
+    insert(value, index) {
+        const node = new Node(value)
+        let previous;
+        let current = this.head;
+        let currentIndex = 0;
+
+        while (currentIndex < index) {
+            previous = current;
+            current = current.next;
+            currentIndex++
+        }
+
+        if (current === null) {
+            return console.log("Value not found in the list");
+        }
+
+        node.next = current;
+        previous.next = node;
+        this.size++
+    }
+
+    insertAfter(value, newValue) {
+        let current = this.head;
+
+        while (current != null && current.value != value) {
+            current = current.next;
+        }
+
+        if (current == null) return "Value not found"
+
+        const node = new Node(newValue);
+        node.next = current.next;
+        current.next = node;
+        this.size++
+
+
+    }
+
+    insertBefore(value, newValue) {
+        let current = this.head;
+        let previous;
+
+        while (current != null && current.value !== value) {
+            previous = current;
+            current = current.next
+        }
+
+        if (current == null) return "Empty"
+
+        const node = new Node(newValue);
+        previous.next = node;
+        node.next = current;
+        this.sizw++
+    }
+
 
 }
 
@@ -155,5 +210,5 @@ list.prepend(11)
 list.prepend(12)
 list.prepend(13)
 list.removeOddNumbers()
- list.print();
+list.print();
 //console.log(list.findMiddle())
